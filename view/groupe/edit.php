@@ -16,18 +16,18 @@
  				
  				<div class="card-body bg-light">
  					
- 					<form method="post" action="http://localhost/gestionEmploi/Salle/updateData" >
+ 					<form method="post" action="http://localhost/gestionEmploi/groupe/updateData" >
                         <div class="form-group">
  							
- 							<input type="hidden" name="idSalle" class="form-control" value="<?= $result["idSalle"] ?>">
+ 							<input type="hidden" name="idGroupe" class="form-control" value="<?= $result["idGroupe"] ?>">
  						</div>
  						<div class="form-group">
  							<label for="libellesalle">Libelle Salle</label>
- 							<input type="text" name="libelle" class="form-control" value="<?= $result["libelle"] ?>">
+ 							<input type="text" name="libelleGroupe" class="form-control" value="<?= $result["libelleGroupe"] ?>">
  						</div>
  						<div class="form-group">
  							<label for="capacitesalle">Capacite Salle</label>
- 							<input type="number" name="capacite" class="form-control" value="<?= $result["capacite"] ?>">
+ 							<input type="number" name="effectif" class="form-control" value="<?= $result["effectif"] ?>">
  						</div>
  						
  						<button type="submit" class="btn  btn-primary" name="edit">Edit</button>

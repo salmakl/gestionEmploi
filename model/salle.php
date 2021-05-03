@@ -33,30 +33,22 @@ class salleModel extends Connection
 
      function update($id,$libelle,$capacite)
     {
-        $this->id=$id;
-        $this->libelle=$libelle;
-        $this->capacite=$capacite;
-        $this->con->query("UPDATE `salle` SET `Libelle`='".$this->libelle."',`capasiter`=".$this->capacite." WHERE idSalle=".$this->id);
+        // $this->id=$id;
+        // $this->libelle=$libelle;
+        // $this->capacite=$capacite;
+        $this->connection->query("UPDATE salle SET libelle='$libelle', capacite='$capacite' WHERE idSalle=$id");
        
     }
 
-    // function create($libelle,$capacite)
-    // {
+    function Insert($libelle,$capacite)
+    {
         
-    //     $this->libelle=$libelle;
-    //     $this->capacite=$capacite;
-    //     $this->con->query("INSERT INTO `salle`(`libelle`, `capasite`) VALUES ('".$this->libelle."',".$this->capacite.")");
-    //     $this->con->execute();
-    // }
+        $this->libelle=$libelle;
+        $this->capacite=$capacite;
+        $this->connection->query("INSERT INTO salle(`libelle`, `capacite`) VALUES ('$libelle','$capacite')");
+       
+    }
    
   
-
-    // function select_by_id($id)
-    // {
-    //     $this->id=$id;
-    //     $this->con->query("SELECT * FROM `salle` WHERE idSalle=".$this->id);
-    //     $this->con->execute();
-    //     return $this->con->selectAll();
-    // }
 }
 ?>

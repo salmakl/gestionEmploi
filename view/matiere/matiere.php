@@ -1,11 +1,11 @@
 <?php
-require __DIR__.'/../../controller/salleController.php'
+require __DIR__.'/../../controller/MatiereController.php'
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="http://localhost/gestionEmploi/view/bootstrap/css/bootstrap.css">
-	<title>SALLE</title>
+	<title>Matieres</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -15,13 +15,13 @@ require __DIR__.'/../../controller/salleController.php'
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item ">
           <a class="nav-link" href="http://localhost/gestionEmploi/home/salle">Salle <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="http://localhost/gestionEmploi/home/groupe">Groupe</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="http://localhost/gestionEmploi/home/matiere">Matière</a>
         </li>
       </ul>
@@ -42,16 +42,13 @@ require __DIR__.'/../../controller/salleController.php'
  				
  				<div class="card-body bg-light">
  					
- 					<form method="post" action="http://localhost/gestionEmploi/Salle/create" >
+ 					<form method="post" action="http://localhost/gestionEmploi/Matiere/create" >
                      
  						<div class="form-group">
- 							<label for="libellesalle">Libelle Salle</label>
- 							<input type="text" name="libelle" class="form-control" placeholder="Libelle Salle">
+ 							<label for="libellesalle">Libelle Matière</label>
+ 							<input type="text" name="libelleMatiere" class="form-control" placeholder="Libelle Salle">
  						</div>
- 						<div class="form-group">
- 							<label for="capacitesalle">Capacite Salle</label>
- 							<input type="nom" name="capacite" class="form-control" placeholder="Capacite Salle">
- 						</div>
+ 		
  						
  						<button type="submit" class="btn  btn-primary" name="add">Envoyer</button>
  					</form>
@@ -68,25 +65,24 @@ require __DIR__.'/../../controller/salleController.php'
   <thead>
     <tr>
       
-      <th scope="col">ID Salle</th>
+      <th scope="col">ID Matière</th>
       <th scope="col">Libelle</th>
-      <th scope="col">Capacité</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
 <?php
-  $salle=new SalleController;
-  $table=$salle->read();
+  $matiere=new MatiereController;
+  $table=$matiere->read();
  
   foreach($table as $data){
   
     // echo $row;
     echo '<tr>
-    <td>'.$data['idSalle'].'</td>
-    <td>'.$data['libelle'].'</td>
-    <td>'.$data['capacite'].'</td>
-    <td><a href="http://localhost/gestionEmploi/salle/edit/'.$data['idSalle'].'"  class="btn btn-info">Edite</a> <a href="http://localhost/gestionEmploi/salle/delete/'.$data['idSalle'].'" class="btn btn-danger">Delete</a></td>
+    <td>'.$data['idMatiere'].'</td>
+    <td>'.$data['libelleMatiere'].'</td>
+    
+    <td><a href="http://localhost/gestionEmploi/matiere/edit/'.$data['idMatiere'].'"  class="btn btn-info">Edite</a> <a href="http://localhost/gestionEmploi/matiere/delete/'.$data['idMatiere'].'" class="btn btn-danger">Delete</a></td>
   </tr>';
   }
   

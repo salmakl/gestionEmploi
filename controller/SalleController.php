@@ -22,7 +22,11 @@ class SalleController
 
 	function create()
 	{
-		require_once __DIR__.'/../view/salle/create.php';
+		$salle=new salleModel();
+		$libelle=$_POST['libelle'];
+		$capacite=$_POST['capacite'];
+		$salle->Insert($libelle,$capacite);
+		header('location:http://localhost/gestionEmploi/home');
 	}
 
 	function read()
@@ -36,26 +40,24 @@ class SalleController
 		
 		$salle=new salleModel;
 	 	$salle->deletesalle($id);
+		header('location:http://localhost/gestionEmploi/home');
 	}
 
 	function edit($id)
 	{
 		$salle=new salleModel();
 		 $result = $salle->SelectSalle($id);
-		
-		//  	$id='';
-		// 	$libelle='';
-		// 	$capacite='';
-		// 	foreach($result as $row){
-		// 	$id=$row['idSalle'];
-		// 	$libelle=$row['libelle'];
-		// 	$capacite=$row['capacite'];
-		// 	}
-		// header('location:http://localhost/gestionEmploi/edit.php');
-		//header('location:http://localhost/gestionEmploi/view/salle/edit.php');
-		require __DIR__."/../view/salle/edit.php";
-		// require_once __DIR__."/../view/salle/salle.php";
-		
+		require __DIR__."/../view/salle/edit.php";		
 	}
+	function updateData(){
 
+		$id=$_POST['idSalle'];
+		$libelle=$_POST['libelle'];
+		$capacite=$_POST['capacite'];
+		$salle=new salleModel();
+		$salle->update($id,$libelle,$capacite);
+		header('location:http://localhost/gestionEmploi/home');
+
+	}
+	
 }
