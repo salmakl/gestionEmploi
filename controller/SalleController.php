@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__.'/../model/salle.php';
-session_start();
+
 
 class SalleController
 {
@@ -23,10 +23,15 @@ class SalleController
 	function create()
 	{
 		$salle=new salleModel();
-		$libelle=$_POST['libelle'];
-		$capacite=$_POST['capacite'];
-		$salle->Insert($libelle,$capacite);
-		header('location:http://localhost/gestionEmploi/home');
+		// $libelle=$_POST['libelle'];
+		// $capacite=$_POST['capacite'];
+		
+		$i=0;
+     	 while(isset($_POST['capacite'.$i])){
+		$salle->Insert($_POST['libelle'.$i],$_POST['capacite'.$i]);
+		$i++;
+		  }
+	 header('location:http://localhost/gestionEmploi/home');
 	}
 
 	function read()

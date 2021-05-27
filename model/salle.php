@@ -15,8 +15,8 @@ class salleModel extends Connection
         $sql="SELECT * FROM `salle` where idSalle=".$this->id;
         $res=$this->connection;
         $result=$res->query($sql);
-      $rst=$result->fetchAll(PDO::FETCH_ASSOC);
-      return $rst[0];
+        $rst=$result->fetchAll(PDO::FETCH_ASSOC);
+        return $rst[0];
     }
     function SelectAll(){
         $sql="SELECT * FROM `salle`";
@@ -48,7 +48,16 @@ class salleModel extends Connection
         $this->connection->query("INSERT INTO salle(`libelle`, `capacite`) VALUES ('$libelle','$capacite')");
        
     }
-   
+    
+    public function disponibilite($id,$hd,$date){
+        $sql="SELECT * from cours where idSalle=$id AND heureDebut='$hd' AND date='$date'";
+        $query = $this->connection->query($sql);
+        $result= $query->fetchAll(PDO::FETCH_ASSOC);
+        if($result){
+        return $result[0];  
+        }
+       
+    }
   
 }
 ?>

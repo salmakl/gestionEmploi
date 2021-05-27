@@ -5,7 +5,11 @@ require __DIR__.'/../../controller/salleController.php'
 <html>
 <head>
 <link rel="stylesheet" href="http://localhost/gestionEmploi/view/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="http://localhost/gestionEmploi/view/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
 	<title>SALLE</title>
+  
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +30,10 @@ require __DIR__.'/../../controller/salleController.php'
         </li>
       </ul>
       <span class="navbar-text">
-        
+     <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["idadmin"].'</b></p>';?>
+     <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
+     
+
       </span>
     </div>
 </nav>
@@ -42,20 +49,25 @@ require __DIR__.'/../../controller/salleController.php'
  				
  				<div class="card-body bg-light">
  					
- 					<form method="post" action="http://localhost/gestionEmploi/Salle/create" >
+ 					<form method="post" id="form" action="http://localhost/gestionEmploi/Salle/create" >
                      
- 						<div class="form-group">
+            <div class="row">
+ 						<div class="form-group col-md-4 ">
  							<label for="libellesalle">Libelle Salle</label>
- 							<input type="text" name="libelle" class="form-control" placeholder="Libelle Salle">
+ 							<input type="text" name="libelle" id="libelle" class="form-control" placeholder="Libelle Salle">
  						</div>
- 						<div class="form-group">
+ 						<div class="form-group col-md-4">
  							<label for="capacitesalle">Capacite Salle</label>
- 							<input type="nom" name="capacite" class="form-control" placeholder="Capacite Salle">
+ 							<input type="nom" name="capacite" id="capacite" class="form-control" placeholder="Capacite Salle">
  						</div>
  						
- 						<button type="submit" class="btn  btn-primary" name="add">Envoyer</button>
+ 						<button onclick="addSalle()"><i class="fas fa-plus-square"></i></button>
+             <button type="submit" class="btn  btn-primary mb-2 add" name="add">Envoyer</button>
+             
+             </div>
+             
  					</form>
- 					
+ 			
                    
  				</div>
  			</div>
@@ -95,5 +107,6 @@ require __DIR__.'/../../controller/salleController.php'
 
   </tbody>
 </table>
+<script src="http://localhost/gestionEmploi/view/js/salle.js"></script>
 </body>
 </html>

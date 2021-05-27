@@ -27,6 +27,7 @@
                             </div>
                             <div class="form-group mt-4">
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                                <a href="http://localhost/gestionEmploi/home/signup"><input type="button" class="btn btn-success" name="inscription" value="Inscription"></a>
                             </div>
                         </form>
                     </div>

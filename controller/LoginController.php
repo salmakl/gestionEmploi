@@ -1,9 +1,11 @@
 <?php
 	
 require __DIR__.'/../model/admin.php';
+require __DIR__.'/../model/user.php';
 /**
  * 
  */
+// session_start();
 class LoginController
 {
 	public function index()
@@ -18,14 +20,22 @@ class LoginController
             $email = $_POST['email'];
             $password = $_POST['password'];
             $admin = new admin();
-            $myAdmin = $admin->check_login($email, $password);
-            
-            if(!empty($myAdmin)){
+            $user = new User();
+            $Admin = $admin->check_login_Admin($email, $password);
+            $User= $user->check_login_User($email, $password);
+            if(!empty($Admin)){
                 
-                session_start();
-               $_SESSION["id"]=$myAdmin['idAdmin'];
-                // require __DIR__."/../view/salle.php";
+                
+               $_SESSION["idadmin"]=$Admin['idAdmin'];
+                 //print_r($Admin);
+                
                 header('location:http://localhost/gestionEmploi/home/');
+            }else if(!empty($User))
+            {
+                
+                $_SESSION["iduser"]=$User['idEnseignant'];
+                $_SESSION["prenom"]=$User['prenom'];
+                 header('location:http://localhost/gestionEmploi/home/reserver');
             }
             else{
                 
