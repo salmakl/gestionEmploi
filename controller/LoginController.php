@@ -27,15 +27,15 @@ class LoginController
                 
                 
                $_SESSION["idadmin"]=$Admin['idAdmin'];
-                 //print_r($Admin);
+                 print_r($Admin);
                 
-                header('location:http://localhost/gestionEmploi/home/');
+                header('location:http://localhost/gestionEmploi/salle/');
             }else if(!empty($User))
             {
                 
                 $_SESSION["iduser"]=$User['idEnseignant'];
                 $_SESSION["prenom"]=$User['prenom'];
-                 header('location:http://localhost/gestionEmploi/home/reserver');
+                 header('location:http://localhost/gestionEmploi/user');
             }
             else{
                 

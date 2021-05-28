@@ -1,6 +1,3 @@
-<?php
-require __DIR__.'/../../controller/salleController.php'
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,13 +17,13 @@ require __DIR__.'/../../controller/salleController.php'
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/salle">Salle <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/salle/">Salle <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/groupe">Groupe</a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/groupe">Groupe</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/matiere">Matière</a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/matiere">Matière</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -38,7 +35,7 @@ require __DIR__.'/../../controller/salleController.php'
     </div>
 </nav>
       <div class="navbar-wrapper">
-                <a class=" btn btn-primary pull-right" href="#">ADD SALLE</a>
+                
       </div>
 
       <div class="container">
@@ -80,30 +77,36 @@ require __DIR__.'/../../controller/salleController.php'
   <thead>
     <tr>
       
-      <th scope="col">ID Salle</th>
+ 
       <th scope="col">Libelle</th>
       <th scope="col">Capacité</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-<?php
-  $salle=new SalleController;
-  $table=$salle->read();
- 
-  foreach($table as $data){
-  
-    // echo $row;
-    echo '<tr>
-    <td>'.$data['idSalle'].'</td>
-    <td>'.$data['libelle'].'</td>
-    <td>'.$data['capacite'].'</td>
-    <td><a href="http://localhost/gestionEmploi/salle/edit/'.$data['idSalle'].'"  class="btn btn-info">Edite</a> <a href="http://localhost/gestionEmploi/salle/delete/'.$data['idSalle'].'" class="btn btn-danger">Delete</a></td>
-  </tr>';
-  }
-  
-?>
-    
+
+    <?php $i=1;
+              foreach($table as $data){ ?>
+          <form action="http://localhost/gestionEmploi/salle/updateData" method="POST">
+                <tr>
+                  <td>
+                    <input type="hidden" class="form-control" id="idSalle" name="idSalle" value="<?=$data['idSalle']?>">
+                    <label id="labelNomSalle<?=$i?>"><?=$data['libelle']?></label>
+                    <input type="text" name="libelle" id="nomSalle<?=$i?>" value="<?=$data['libelle']?>" style="display:none">
+                  </td>
+                  <td>
+                    <label id="labelCapaciteSalle<?=$i?>"><?=$data['capacite']?></label>
+                    <input type="text" name="capacite" id="capaciteSalle<?=$i?>" value="<?=$data['capacite']?>" style="display:none">
+                  </td>
+                  <td class="text-center">
+                    <a class='btn btn-info btn-xs' onclick="edit(<?=$i?>)" id="editButton<?=$i?>"> Edit</a> 
+                    <a href="http://localhost/gestionEmploi/salle/delete/<?=$data['idSalle']?>" id="deleteButton<?=$i?>" class="btn btn-danger btn-xs"> Delete</a>
+                    <input type="submit" class='btn btn-success btn-xs' id="saveButton<?=$i?>" name="update" value="Save" style="display:none"> 
+                    <a onclick="cancel(<?=$i?>)" class="btn btn-warning btn-xs" id="cancelButton<?=$i?>" style="display:none">Cancel</a>
+                  </td>
+                </tr>
+          </form>
+            <?php $i++;} ?>
 
   </tbody>
 </table>

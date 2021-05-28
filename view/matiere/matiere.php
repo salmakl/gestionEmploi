@@ -1,10 +1,10 @@
-<?php
-require __DIR__.'/../../controller/MatiereController.php'
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="http://localhost/gestionEmploi/view/bootstrap/css/bootstrap.css">
+<script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
+
 	<title>Matieres</title>
 </head>
 <body>
@@ -16,29 +16,32 @@ require __DIR__.'/../../controller/MatiereController.php'
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/salle">Salle <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/salle/">Salle <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/groupe">Groupe</a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/groupe/">Groupe</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="http://localhost/gestionEmploi/home/matiere">Matière</a>
+          <a class="nav-link" href="http://localhost/gestionEmploi/matiere">Matière</a>
         </li>
       </ul>
       <span class="navbar-text">
-        
+     <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["idadmin"].'</b></p>';?>
+     <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
+     
+
       </span>
     </div>
 </nav>
       <div class="navbar-wrapper">
-                <a class=" btn btn-primary pull-right" href="#">ADD SALLE</a>
+                
       </div>
 
       <div class="container">
  	<div class="row my-4">
  		<div class="col-md-8 mx-auto">
  			<div class="card">
- 				<div class="card-header">Ajouter une Salle</div>
+ 				<div class="card-header">Ajouter une matière</div>
  				
  				<div class="card-body bg-light">
  					
@@ -72,8 +75,7 @@ require __DIR__.'/../../controller/MatiereController.php'
   </thead>
   <tbody>
 <?php
-  $matiere=new MatiereController;
-  $table=$matiere->read();
+
  
   foreach($table as $data){
   

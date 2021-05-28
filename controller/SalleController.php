@@ -1,24 +1,20 @@
 <?php
-
 require __DIR__.'/../model/salle.php';
-
-
 class SalleController
 {
 
-    function index()
-    {
-        
-        if(!empty($_SESSION["id"]))
-        {
-            
-            require_once __DIR__."/../view/salle.php";
-        }else
-        {
-            header('location: http://localhost/gestionEmploi/');
-        }
-        
-    }
+	function index()
+	{
+		
+		session_start();
+		if(isset($_SESSION["idadmin"]) && !empty($_SESSION["idadmin"])){
+		$salle=new salleModel;
+		$table=$salle->SelectAll();
+		require __DIR__."/../view/salle/salle.php";}
+		else{
+			require __DIR__."/../view/login.php";
+		}
+	}
 
 	function create()
 	{
@@ -61,7 +57,7 @@ class SalleController
 		$capacite=$_POST['capacite'];
 		$salle=new salleModel();
 		$salle->update($id,$libelle,$capacite);
-		header('location:http://localhost/gestionEmploi/home');
+		header('location:http://localhost/gestionEmploi/salle');
 
 	}
 	

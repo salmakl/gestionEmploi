@@ -30,7 +30,7 @@
       </ul>
       <span class="navbar-text">
      <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["prenom"].'</b></p>';?>
-     <a href="http://localhost/gestionEmploi/home/logout"><i class="fas fa-sign-out-alt"></i></a>
+     <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
      
 
       </span>
@@ -66,13 +66,14 @@ foreach($resGroupe as $row){
  
         </select>
 
-
+        <div class="line" style="color:red;"><?=$errorG?></div>
   
     <label for="example-date-input" class="col-form-label">Date</label>
     <div class="col-2">
       <input class="form-control" type="date" value="" name="date" id="example-date-input">
     </div>
   </div>
+  <div class="line" style="color:red;"><?=$errorD?></div>
 
   <div class="form-group col-md-6">
                 <label for="inputState">Heure Debut</label>
@@ -94,6 +95,7 @@ foreach($resGroupe as $row){
                   <option>18:00</option>
                 </select>
               </div>
+              <div class="line" style="color:red;"><?=$err?></div>
 
 <button type="submit">Réserver</button>
 

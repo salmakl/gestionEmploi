@@ -15,6 +15,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">E-TEACH</a>
             <div class="container-fluid">
               <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">

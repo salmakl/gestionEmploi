@@ -20,6 +20,14 @@ class UserController {
         }
     }
 
+    function signup()
+	{
+		require_once __DIR__."/../model/matiere.php";
+		$matiere=new matiere;
+		$result=$matiere->SelectAll();
+		require __DIR__."/../view/user/createAccount.php";
+	}
+
     public function createAccount()
 	{
         $inscription= new User();
@@ -37,7 +45,7 @@ class UserController {
 			}
 		}
 	}
-    function addPage($errorSalle="")
+    function addPage($errorSalle="",$errorG="",$errorD="",$err="")
     {
         $salle=new salleModel();
         $groupe=new Groupe();
@@ -66,19 +74,18 @@ class UserController {
                        $mySalle1=$salle->disponibilite($idSalle,$hd,$date);
                        print_r($mySalle1);
                        if(isset($mySalle1)){
-
                            $this->addPage("la salle deja reservée","","la date deja reservée","l'heure deja reservée");
                        }else{
                           $ana= $reservation->reserver($idUser,$idSalle,$idGroupe,$date,$hd,$hf);
-                           $this->index();
+                            $this->index();
                        }
                    }            
                    else{
-                       $this->index("","la salle ne support pas ce groupe","","");
+                       $this->addPage("","la salle ne support pas ce groupe","","");
                     //    header('location:http://localhost/gestionEmploi/user/');
                    }        
                }else{
-                   $this->index("","","date non valide","");
+                   $this->addPage("","","date non valide","");
                }
            }
        }

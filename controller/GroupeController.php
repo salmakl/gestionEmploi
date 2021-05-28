@@ -3,6 +3,18 @@ require __DIR__.'/../model/groupe.php';
 
 class GroupeController {
 
+	function index()
+	{
+		
+		session_start();
+		if(isset($_SESSION["idadmin"]) && !empty($_SESSION["idadmin"])){
+		$groupe=new Groupe;
+		$table=$groupe->SelectAll();
+		require __DIR__."/../view/groupe/groupe.php";}
+		else{
+			require __DIR__."/../view/login.php";
+		}
+	}
 
 	function create()
 	{

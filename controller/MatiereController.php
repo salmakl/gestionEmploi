@@ -4,6 +4,19 @@ require __DIR__.'/../model/matiere.php';
 class MatiereController {
 
 
+
+	function index()
+	{
+		
+		session_start();
+		if(isset($_SESSION["idadmin"]) && !empty($_SESSION["idadmin"])){
+		$matiere=new Matiere;
+		$table=$matiere->SelectAll();
+		require __DIR__."/../view/matiere/matiere.php";}
+		else{
+			require __DIR__."/../view/login.php";
+		}
+	}
 	function create()
 	{
 		$matiere=new matiere();
