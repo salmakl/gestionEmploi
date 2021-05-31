@@ -27,6 +27,7 @@ class LoginController
                 
                 
                $_SESSION["idadmin"]=$Admin['idAdmin'];
+               $_SESSION["name"]=$Admin['name'];
                  print_r($Admin);
                 
                 header('location:http://localhost/gestionEmploi/salle/');
@@ -35,6 +36,7 @@ class LoginController
                 
                 $_SESSION["iduser"]=$User['idEnseignant'];
                 $_SESSION["prenom"]=$User['prenom'];
+                
                  header('location:http://localhost/gestionEmploi/user');
             }
             else{

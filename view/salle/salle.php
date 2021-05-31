@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/0407d298dc.js" crossorigin="anonymous"></script>
 	<title>SALLE</title>
+  <style>
+  i {
+    background:transparent
+  }
+  </style>
   
 </head>
 <body>
@@ -26,8 +31,8 @@
           <a class="nav-link" href="http://localhost/gestionEmploi/matiere">Matière</a>
         </li>
       </ul>
-      <span class="navbar-text">
-     <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["idadmin"].'</b></p>';?>
+      <span class="">
+     <?php echo'<p class="d-inline" > <i class="d-inline fas fa-user-alt" style=""></i> '. $_SESSION["name"].'</b></p>';?>
      <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
      
 
@@ -39,10 +44,10 @@
       </div>
 
       <div class="container">
- 	<div class="row my-4">
+ 	<div class="row my-5">
  		<div class="col-md-8 mx-auto">
  			<div class="card">
- 				<div class="card-header">Ajouter une Salle</div>
+ 				<div class="card-header text-white" style="background: #17a2b8;">Ajouter une Salle</div>
  				
  				<div class="card-body bg-light">
  					
@@ -51,15 +56,17 @@
             <div class="row">
  						<div class="form-group col-md-4 ">
  							<label for="libellesalle">Libelle Salle</label>
- 							<input type="text" name="libelle" id="libelle" class="form-control" placeholder="Libelle Salle">
+ 							<input type="text" name="libelle0" id="libelle" class="form-control" placeholder="Libelle Salle">
  						</div>
  						<div class="form-group col-md-4">
  							<label for="capacitesalle">Capacite Salle</label>
- 							<input type="nom" name="capacite" id="capacite" class="form-control" placeholder="Capacite Salle">
+ 							<input type="nom" name="capacite0" id="capacite" class="form-control" placeholder="Capacite Salle">
  						</div>
- 						
- 						<button onclick="addSalle()"><i class="fas fa-plus-square"></i></button>
-             <button type="submit" class="btn  btn-primary mb-2 add" name="add">Envoyer</button>
+
+        
+ 						<i class="fas fa-plus-square mr-2" onclick="addSalle()" style="cursor:pointer;margin-top: 2em !important;background: transparent;"></i>
+             <button type="submit" class="btn  btn-info mb-2 add" name="add">Ajoute</button>
+       
              
              </div>
              
@@ -78,9 +85,9 @@
     <tr>
       
  
-      <th scope="col">Libelle</th>
-      <th scope="col">Capacité</th>
-      <th scope="col">Actions</th>
+      <th class="text-center" scope="col">Libelle</th>
+      <th class="text-center" scope="col">Capacité</th>
+      <th class="text-center" scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -89,14 +96,14 @@
               foreach($table as $data){ ?>
           <form action="http://localhost/gestionEmploi/salle/updateData" method="POST">
                 <tr>
-                  <td>
+                  <td class="text-center">
                     <input type="hidden" class="form-control" id="idSalle" name="idSalle" value="<?=$data['idSalle']?>">
                     <label id="labelNomSalle<?=$i?>"><?=$data['libelle']?></label>
-                    <input type="text" name="libelle" id="nomSalle<?=$i?>" value="<?=$data['libelle']?>" style="display:none">
+                    <input type="text" class="text-center" name="libelle" id="nomSalle<?=$i?>" value="<?=$data['libelle']?>" style="display:none">
                   </td>
-                  <td>
+                  <td class="text-center">
                     <label id="labelCapaciteSalle<?=$i?>"><?=$data['capacite']?></label>
-                    <input type="text" name="capacite" id="capaciteSalle<?=$i?>" value="<?=$data['capacite']?>" style="display:none">
+                    <input type="text" class="text-center" name="capacite" id="capaciteSalle<?=$i?>" value="<?=$data['capacite']?>" style="display:none">
                   </td>
                   <td class="text-center">
                     <a class='btn btn-info btn-xs' onclick="edit(<?=$i?>)" id="editButton<?=$i?>"> Edit</a> 

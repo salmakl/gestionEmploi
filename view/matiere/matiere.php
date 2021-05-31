@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +24,8 @@
           <a class="nav-link" href="http://localhost/gestionEmploi/matiere">Matière</a>
         </li>
       </ul>
-      <span class="navbar-text">
-     <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["idadmin"].'</b></p>';?>
+      <span class="">
+     <?php echo'<p class="d-inline mr-3" > <i class="d-inline fas fa-user-alt" style=""></i>'.$_SESSION["name"].'</b></p>';?>
      <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
      
 
@@ -38,10 +37,10 @@
       </div>
 
       <div class="container">
- 	<div class="row my-4">
+ 	<div class="row my-5">
  		<div class="col-md-8 mx-auto">
  			<div class="card">
- 				<div class="card-header">Ajouter une matière</div>
+ 				<div class="card-header  text-white" style="background: #17a2b8;">Ajouter une matière</div>
  				
  				<div class="card-body bg-light">
  					
@@ -53,7 +52,7 @@
  						</div>
  		
  						
- 						<button type="submit" class="btn  btn-primary" name="add">Envoyer</button>
+ 						<button type="submit" class="btn  btn-info" name="add">Envoyer</button>
  					</form>
  					
                    
@@ -68,30 +67,35 @@
   <thead>
     <tr>
       
-      <th scope="col">ID Matière</th>
-      <th scope="col">Libelle</th>
-      <th scope="col">Actions</th>
+      
+      <th scope="col" class="text-center">Libelle</th>
+      <th scope="col" class="text-center">Actions</th>
     </tr>
   </thead>
   <tbody>
-<?php
-
- 
-  foreach($table as $data){
-  
-    // echo $row;
-    echo '<tr>
-    <td>'.$data['idMatiere'].'</td>
-    <td>'.$data['libelleMatiere'].'</td>
-    
-    <td><a href="http://localhost/gestionEmploi/matiere/edit/'.$data['idMatiere'].'"  class="btn btn-info">Edite</a> <a href="http://localhost/gestionEmploi/matiere/delete/'.$data['idMatiere'].'" class="btn btn-danger">Delete</a></td>
-  </tr>';
-  }
-  
-?>
+  <?php $i=1;
+              foreach($table as $data){ ?>
+          <form action="http://localhost/gestionEmploi/matiere/updateData" method="POST">
+                <tr>
+                  <td class="text-center"*>
+                    <input type="hidden" class="form-control" id="idMatiere" name="idMatiere" value="<?=$data['idMatiere']?>">
+                    <label id="labelMatiere<?=$i?>"><?=$data['libelleMatiere']?></label>
+                    <input type="text" class="text-center" name="libelleMatiere" id="nomMatiere<?=$i?>" value="<?=$data['libelleMatiere']?>" style="display:none">
+                  </td>
+                
+                  <td class="text-center"*>
+                    <a class='btn btn-info btn-xs' onclick="edit(<?=$i?>)" id="editButton<?=$i?>"> Edit</a> 
+                    <a href="http://localhost/gestionEmploi/matiere/delete/<?=$data['idMatiere']?>" id="deleteButton<?=$i?>" class="btn btn-danger btn-xs"> Delete</a>
+                    <input type="submit" class='btn btn-success btn-xs' id="saveButton<?=$i?>" name="update" value="Save" style="display:none"> 
+                    <a onclick="cancel(<?=$i?>)" class="btn btn-warning btn-xs" id="cancelButton<?=$i?>" style="display:none">Cancel</a>
+                  </td>
+                </tr>
+          </form>
+            <?php $i++;} ?>
     
 
   </tbody>
 </table>
+<script src="http://localhost/gestionEmploi/view/js/matiere.js"></script>
 </body>
 </html>

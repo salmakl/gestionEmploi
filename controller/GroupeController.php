@@ -23,7 +23,7 @@ class GroupeController {
 		$effectif=$_POST['effectif'];
 		$groupe->Insert($libelleG,$effectif);
         // print_r($groupe);
-		header('location:http://localhost/gestionEmploi/home/groupe');
+		header('location:http://localhost/gestionEmploi/groupe');
 	}
 
 	function read()
@@ -37,7 +37,7 @@ class GroupeController {
 		
 		$groupe=new groupe;
 	 	$groupe->deleteGroupe($id);
-		 header('location:http://localhost/gestionEmploi/home/groupe');
+		 header('location:http://localhost/gestionEmploi/groupe');
 	}
 
 	function edit($id)
@@ -53,8 +53,8 @@ class GroupeController {
 		$effectif=$_POST['effectif'];
 		$groupe=new groupe();
 		$groupe->update($id,$libelle,$effectif);
-		// print_r($groupe);
-		header('location:http://localhost/gestionEmploi/home/groupe');
+		
+		header('location:http://localhost/gestionEmploi/groupe');
 
 	}
 	

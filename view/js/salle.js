@@ -16,9 +16,9 @@ function addSalle(){
 }
 function edit(e) {
     document.getElementById("labelNomSalle" + e).style.display = "none";
-    document.getElementById("nomSalle" + e).style.display = "block";
+    document.getElementById("nomSalle" + e).style.display = "inline";
     document.getElementById("labelCapaciteSalle" + e).style.display = "none";
-    document.getElementById("capaciteSalle" + e).style.display = "block";
+    document.getElementById("capaciteSalle" + e).style.display = "inline";
     document.getElementById("editButton" + e).style.display = "none";
     document.getElementById("deleteButton" + e).style.display = "none";
     document.getElementById("saveButton" + e).style.display = "inline-block";

@@ -27,7 +27,7 @@ class SalleController
 		$salle->Insert($_POST['libelle'.$i],$_POST['capacite'.$i]);
 		$i++;
 		  }
-	 header('location:http://localhost/gestionEmploi/home');
+	 header('location:http://localhost/gestionEmploi/salle');
 	}
 
 	function read()
@@ -41,7 +41,7 @@ class SalleController
 		
 		$salle=new salleModel;
 	 	$salle->deletesalle($id);
-		header('location:http://localhost/gestionEmploi/home');
+		header('location:http://localhost/gestionEmploi/salle');
 	}
 
 	function edit($id)

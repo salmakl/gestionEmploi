@@ -23,7 +23,7 @@ class MatiereController {
 		$libelleM=$_POST['libelleMatiere'];
 		$matiere->Insert($libelleM);
         // print_r($matiere);
-		header('location:http://localhost/gestionEmploi/home/matiere');
+		header('location:http://localhost/gestionEmploi/matiere');
 	}
 
 	function read()
@@ -37,7 +37,7 @@ class MatiereController {
 		
 		$matiere=new Matiere;
 	 	$matiere->deleteMatiere($id);
-         header('location:http://localhost/gestionEmploi/home/matiere');
+         header('location:http://localhost/gestionEmploi/matiere');
 	}
 
 	function edit($id)
@@ -52,7 +52,7 @@ class MatiereController {
 		$libelle=$_POST['libelleMatiere'];
 		$matiere=new Matiere();
 		$matiere->update($id,$libelle);
-		header('location:http://localhost/gestionEmploi/home/matiere');
+		header('location:http://localhost/gestionEmploi/matiere');
 
 	}
 	

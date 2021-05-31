@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   
     <title>Document</title>
+    <style>
+    i {
+      background:transparent;
+    }</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,39 +25,48 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          
+        <a class="nav-link "  href="http://localhost/gestionEmploi/user/">reservation</a>
         </li>
         <li class="nav-item">
           
         </li>
        
       </ul>
-      <span class="navbar-text">
-     <?php echo'<p> <i class="fas fa-user-alt"></i> '.$_SESSION["prenom"].'</b></p>';?>
-     <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
+      <span class="">
+      <?php echo'<p class="d-inline mr-3" > <i class="d-inline fas fa-user-alt mr-2" style=""></i>'.$_SESSION["prenom"].'</b></p>';?>
+      <a href="http://localhost/gestionEmploi/logout/"><i class="fas fa-sign-out-alt"></i></a>
      
 
       </span>
     </div>
 </nav>
 
+<div class="container">
+
 
     <form action="http://localhost/gestionEmploi/user/Ajouter" method="post">
-    <div class="form-group row">  
-
-    <select class="form-select form-select-lg col-2" aria-label=".form-select-lg example" name="salle">
+   
+      <div class="line" style="color:red;"><?=$errorSalle?></div>
+      <div class="line" style="color:red;"><?=$errorG?></div>
+      <div class="row py-5">
+<div class="col">
+<label for="salle" class="col-form-label">Salle</label>
+    <select class="form-control w-100" aria-label=".form-select-lg example" name="salle">
           <option selected>Séléctionnez une salle</option>
-    <?php
-foreach($resSalle as $row){
+            <?php
+        foreach($resSalle as $row){
 
-    echo '    
-          <option value="'.$row["idSalle"].'">'.$row["libelle"].'</option>
+            echo '    
+                  <option value="'.$row["idSalle"].'">'.$row["libelle"].'</option>
 
-        ';
- } ?>
+                ';
+        } ?>
  </select>
- <div class="line" style="color:red;"><?=$errorSalle?></div>
- <select class="form-select form-select-lg col-2" aria-label=".form-select-sm example" name="groupe">
+ </div>
+ <div class="col">
+<label for="salle" class="col-form-label">Groupe</label>
+ 
+ <select class="form-control w-100" aria-label=".form-select-sm example" name="groupe">
           <option selected>Séléctionnez un groupe</option>
  <?php
 foreach($resGroupe as $row){
@@ -65,15 +78,15 @@ foreach($resGroupe as $row){
  } ?>
  
         </select>
-
-        <div class="line" style="color:red;"><?=$errorG?></div>
+        </div>
   
+    <div class="col">
     <label for="example-date-input" class="col-form-label">Date</label>
-    <div class="col-2">
       <input class="form-control" type="date" value="" name="date" id="example-date-input">
     </div>
-  </div>
+</div>
   <div class="line" style="color:red;"><?=$errorD?></div>
+<div class="row">
 
   <div class="form-group col-md-6">
                 <label for="inputState">Heure Debut</label>
@@ -97,9 +110,9 @@ foreach($resGroupe as $row){
               </div>
               <div class="line" style="color:red;"><?=$err?></div>
 
-<button type="submit">Réserver</button>
-
+</div>
+<button class="btn btn-info" type="submit">Réserver</button>
     </form>
-
+    </div>
 </body>
 </html>
